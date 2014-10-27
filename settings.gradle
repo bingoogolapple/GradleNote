@@ -1,0 +1,5 @@
+rootProject.name = 'GradleNote'
+
+include 'One'
+include 'Two'
+include 'SpringMVC'

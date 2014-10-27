@@ -1,0 +1,34 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+version = '1.0'
+
+dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    compile 'org.springframework:spring-webmvc:4.1.1.RELEASE'
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile project(':One')
+    runtime 'javax.servlet:jstl:1.1.2'
+}
+
+/* Change context path (base url). Otherwise defaults to name of project */
+jettyRunWar {
+    contextPath = project.name
+    httpPort = 8888
+    stopPort = 8090
+    stopKey = 'foo'
+}
+
+jettyRun {
+    contextPath = project.name
+    httpPort = 8888
+    stopPort = 8090
+    stopKey = 'foo'
+    reload ="automatic"
+    scanIntervalSeconds = 5
+}
+
+jettyStop {
+    stopPort = 8090
+    stopKey = 'foo'
+}

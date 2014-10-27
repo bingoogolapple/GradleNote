@@ -1,0 +1,21 @@
+version = '1.0'
+
+
+dependencies {
+    compile project(':Two')
+}
+
+
+task taskA << {
+    println 'this is taskA from One'
+}
+
+task taskB << {
+    println 'this is taskB from One'
+}
+
+taskA.dependsOn taskB
+
+taskA.dependsOn ':Two:taskC'
+
+taskB.dependsOn ':Two:taskD'

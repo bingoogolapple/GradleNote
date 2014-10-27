@@ -1,0 +1,40 @@
+version = '1.0'
+// 单引号包围的表达式，里面的字符串插值是不会被识别的。双引号包围的表达式正好相反。
+allprojects {
+    apply plugin: 'idea'
+
+    task allTask << {
+        println project.name
+    }
+}
+
+
+subprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.7
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+    task subTask << {
+        println project.name
+    }
+}
+
+project(':One') {
+    task forProject1 << {
+        println 'for project One'
+    }
+}
+
+
+configure(allprojects.findAll { it.name.startsWith('T') }) {
+    subTask << {
+        println 'this project Two'
+    }
+}

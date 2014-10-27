@@ -1,0 +1,59 @@
+apply plugin: 'groovy'
+apply plugin: DateAndTimePlugin
+version = '1.0'
+
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.7'
+}
+
+dateAndTime {
+    timeFormat = 'HH:mm:ss.SSS'
+    dateFormat = 'MM/dd/yyyy'
+}
+
+class DateAndTimePlugin implements Plugin<Project> {
+    void apply(Project project) {
+
+        project.extensions.create("dateAndTime", DateAndTimePluginExtension)
+
+        project.task('showTime') << {
+            println "Current time is " + new Date().format(project.dateAndTime.timeFormat)
+        }
+
+        project.tasks.create('showDate') << {
+            println "Current date is " + new Date().format(project.dateAndTime.dateFormat)
+        }
+    }
+}
+
+class DateAndTimePluginExtension {
+    String timeFormat = "MM/dd/yyyyHH:mm:ss.SSS"
+    String dateFormat = "yyyy-MM-dd"
+}
+
+task taskC << {
+    println 'this is taskC from Two'
+}
+
+task taskD << {
+    println 'this is taskD from Two'
+}
+
+
+class HelloWorldTask extends DefaultTask {
+    @Optional
+    String message = 'I am 王浩'
+
+    @TaskAction
+    def hello(){
+        println "hello Gradle $message"
+    }
+}
+
+task hello(type:HelloWorldTask)
+
+
+task hello1(type:HelloWorldTask) {
+    message ="I am a programmer"
+}

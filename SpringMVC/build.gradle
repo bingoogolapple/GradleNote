@@ -4,9 +4,8 @@ apply plugin: 'jetty'
 version = '1.0'
 
 dependencies {
-    providedCompile 'javax.servlet:servlet-api:2.5'
+    compile 'com.alibaba:fastjson:1.2.0'
     compile 'org.springframework:spring-webmvc:4.1.1.RELEASE'
-    compile fileTree(dir: 'libs', include: '*.jar')
     compile project(':One')
     runtime 'javax.servlet:jstl:1.1.2'
 }
@@ -24,7 +23,7 @@ jettyRun {
     httpPort = 8888
     stopPort = 8090
     stopKey = 'foo'
-    reload ="automatic"
+    reload = "automatic"
     scanIntervalSeconds = 5
 }
 

@@ -17,6 +17,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- id="multipartResolver"必须是multipartResolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- maxUploadSize:文件上传的最大值以byte为单位 -->
+        <property name="maxUploadSize" value="10240000"></property>
+    </bean>
+
     <!-- Maps '/' requests to the 'index' view -->
     <mvc:view-controller path="/" view-name="index"/>
 

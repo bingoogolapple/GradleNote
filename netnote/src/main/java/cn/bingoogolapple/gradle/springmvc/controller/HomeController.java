@@ -40,8 +40,7 @@ public class HomeController {
         CommonsMultipartFile cfile = (CommonsMultipartFile) rm.getFile("pic");
         String originalFilename = cfile.getOriginalFilename();
         System.out.println(originalFilename);
-        System.out.println(person.getName());
-        System.out.println(person.getBirthday());
+        System.out.println(person.toString());
         JsonResp jsonResp = new JsonResp();
         jsonResp.msg = "上传成功";
         return JSON.toJSONString(jsonResp);

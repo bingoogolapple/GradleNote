@@ -16,21 +16,21 @@ dependencies {
 /* Change context path (base url). Otherwise defaults to name of project */
 jettyRunWar {
     contextPath = project.name
-    httpPort = 8888
+    httpPort = 8080
     stopPort = 8090
-    stopKey = 'foo'
+    stopKey = 'stopKey'
 }
 
 jettyRun {
     contextPath = project.name
-    httpPort = 8888
+    httpPort = 8080
     stopPort = 8090
-    stopKey = 'foo'
+    stopKey = 'stopKey'
     reload = "automatic"
     scanIntervalSeconds = 5
 }
 
 jettyStop {
     stopPort = 8090
-    stopKey = 'foo'
+    stopKey = 'stopKey'
 }

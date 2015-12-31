@@ -10,7 +10,7 @@ public class Person {
 
 	private String address;
 
-	private Date birthday;
+	private String birthday;
 
 	public String getName() {
 		return name;
@@ -36,11 +36,11 @@ public class Person {
 		this.address = address;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 

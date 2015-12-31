@@ -19,7 +19,7 @@ import java.util.Date;
 @RequestMapping("/retrofit")
 public class RetrofitController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     private
     @ResponseBody
     String loginGet(@RequestParam("username") String username, @RequestParam("password") String password) {
@@ -27,7 +27,7 @@ public class RetrofitController {
         return processLogin(username, password, "get");
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     private
     @ResponseBody
     String loginPost(@RequestParam("username") String username, @RequestParam("password") String password) {
@@ -47,7 +47,7 @@ public class RetrofitController {
         return JSON.toJSONString(jsonResp);
     }
 
-    @RequestMapping(value = "/header1", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/header1", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     private
     @ResponseBody
     String header1(@RequestHeader("headerParam1") String headerParam1, @RequestHeader("globalHeader1") String globalHeader1, @RequestHeader("globalHeader2") String globalHeader2, @RequestHeader("globalHeader3") String globalHeader3, @RequestHeader("globalHeader4") String globalHeader4) {
@@ -56,7 +56,7 @@ public class RetrofitController {
         return JSON.toJSONString(new JsonResp(headerParam1));
     }
 
-    @RequestMapping(value = "/header2", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/header2", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     private
     @ResponseBody
     String header2(@RequestHeader("headerParam1") String headerParam1, @RequestHeader("headerParam2") String headerParam2, @RequestHeader("globalHeader1") String globalHeader1, @RequestHeader("globalHeader2") String globalHeader2, @RequestHeader("globalHeader3") String globalHeader3, @RequestHeader("globalHeader4") String globalHeader4) {
@@ -65,15 +65,15 @@ public class RetrofitController {
         return JSON.toJSONString(new JsonResp(headerParam1 + " " + headerParam2));
     }
 
-    @RequestMapping(value = "/createPerson", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/createPerson", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     public
     @ResponseBody
-    String createperson(Person person) {
+    String createperson(@RequestBody Person person) {
         log(person.toString());
         return JSON.toJSONString(new JsonResp("createperson 成功 " + person.toString()));
     }
 
-    @RequestMapping(value = "/updateAvatar", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/updateAvatar", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     public
     @ResponseBody
     String updateAvatarAndDesc(@RequestParam("desc") String desc, HttpServletRequest request) {
